@@ -54,7 +54,7 @@ class earth(object):
 			#sunrise = 24*.31
 			return sunrise			# This answer comes out in radians			
 			
-			
+
 			
 			
 		# Unconfirmed	
