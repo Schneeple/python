@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 from datetime import datetime as DT
 from pytz import timezone
 from solartime import SolarTime
