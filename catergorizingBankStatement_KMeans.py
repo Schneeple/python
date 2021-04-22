@@ -7,11 +7,10 @@ import string
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cluster import KMeans
 import seaborn as sns
+import numpy as np
 cf.go_offline()
 nltk.download('stopwords')
 nltk.download('wordnet')
-
-README = " Deleted un used columns. Added a row at the top of csv file and gave it Date, Amount, Description columns names for the df."
 
 def text_process(text):
     '''
@@ -38,4 +37,14 @@ modelkmeans.fit(X_Transformed)
 # Reassigning the category to the dataframe
 df['Category'] = modelkmeans.labels_
 
+
+df['Month'] = pd.to_datetime(df.index).to_period('M')
+
 df.head()
+
+for num in np.unique(df['Category']):
+    dx = df[df['Category'] == num]
+    print(dx['Description'][0])
+    dx['Amount'].iplot()
+    print(dx.groupby(['Category' , 'Month']).sum())
+    print('-------------------------------')
